@@ -1,2 +1,4 @@
 # PROV-Rosetta
-Repository to support the Rosetta Stone of Provenance Models
+This repository contains the working code examples to support the ICKM 2018 presentation "A Rosetta Stone for Provenance Models" authored by Michael R. Gryk, Pratik Shrivastava and Bertram Ludaescher.  As noted in the abstract, there are various types of provenance (retrospective and prospective) and various models for recording provenance.  In this repository we have taken a real-world processing script used for Biomolecular Nuclear Magnetic Resonance (bioNMR) processing and rewritten it as a set of common workflow language (CWL) scripts, annotated it with YesWorkflow annotations, and documented the retrospective provenance using both the PREMIS framework and PROV data model.
+
+We hope that the description of one script in each of these four modeling languages will provide a Rosetta Stone for comparing the provenance semantics between the various models.
