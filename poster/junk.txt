@@ -1,5 +1,0 @@
-cwl-example
-poster
-premis-example
-README.md
-yw-example
