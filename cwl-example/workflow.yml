@@ -1,0 +1,21 @@
+fid:
+  class: File
+  path: hsqc.pipe
+xZF_size: 1024
+xzf_outFile: xzfout_temp
+xFT_flag: TRUE
+xft_outFile: xftout_temp
+xps0: 68.6
+xps1: -34.8
+xps_outFile: xpsout_temp
+xext_outFile: xextout_temp
+tp_outFile: tpout_temp
+yLP_coeff: 30
+yLP_pred: 64
+yLP_start: 2
+yLP_size: 128
+ylp_outFile: ylpout_temp
+yZF_size: 256
+yzf_outFile: yzfout_temp
+yFT_flag: TRUE
+yft_outFile: out.ft2
