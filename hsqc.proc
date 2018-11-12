@@ -1,0 +1,15 @@
+#! /bin/csh
+
+# NMRPipe Data Processing Script 
+
+nmrPipe -in fid.pipe \
+| nmrPipe -fn ZF -size 2048 \
+| nmrPipe -fn FT -verb \
+| nmrPipe -fn PS -p0 68.6 -p1 -34.8 -di \
+| nmrPipe -fn EXT -left -sw -verb \
+| nmrPipe -fn TP \
+| nmrPipe -fn LP -fb -ord 30 -x1 2 -xn 128 -pred 64 -fix -fixMode -after \
+| nmrPipe -fn ZF -size 256 \
+| nmrPipe -fn FT -verb \
+-out out.ft2 -ov 
+

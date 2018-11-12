@@ -1,0 +1,58 @@
+#! /bin/csh
+
+# NMRPipe Data Processing Script 
+
+# @BEGIN ProcessNHSQC
+# @IN TimeData @URI file:fid.pipe
+#    @BEGIN X_NMRPipeZF
+#    @IN TimeData @URI file:fid.pipe
+#    @PARAM X_FinalSize
+#    @OUT ZFXPipe
+#    @END X_NMRPipeZF
+#    @BEGIN X_NMRPipeFT
+#    @IN ZFXPipe
+#    @OUT FTXPipe
+#    @END X_NMRPipeFT
+#    @BEGIN X_NMRPipePS
+#    @IN FTXPipe
+#    @PARAM X_Constant
+#    @PARAM X_Linear
+#    @PARAM X_DeleteImaginaries
+#    @OUT PSXPipe
+#    @END X_NMRPipePS
+#    @BEGIN X_NMRPipeTP
+#    @IN PSXPipe
+#    @OUT TPPipe
+#    @END X_NMRPipeTP
+#    @BEGIN Y_NMRPipeLP
+#    @IN TPPipe
+#    @PARAM Y_LP_Type
+#    @PARAM Y_Coefficients
+#    @PARAM Y_Start
+#    @PARAM Y_Stop
+#    @PARAM Y_Predicted
+#    @OUT LPYPipe
+#    @END Y_NMRPipeLP
+#    @BEGIN Y_NMRPipeZF
+#    @IN LPYPipe
+#    @PARAM Y_FinalSize
+#    @OUT ZFYPipe
+#    @END Y_NMRPipeZF
+#    @BEGIN Y_NMRPipeFT
+#    @IN ZFYPipe
+#    @OUT NHSQC @URI file:out.ft2
+#    @END Y_NMRPipeFT
+# @OUT NHSQC @URI file:out.ft2
+# @END ProcessNHSQC
+
+nmrPipe -in fid.pipe \
+| nmrPipe -fn ZF -size 2048 \
+| nmrPipe -fn FT -verb \
+| nmrPipe -fn PS -p0 68.6 -p1 -34.8 -di \
+| nmrPipe -fn EXT -left -sw -verb \
+| nmrPipe -fn TP \
+| nmrPipe -fn LP -fb -ord 30 -x1 2 -xn 128 -pred 64 -fix -fixMode -after \
+| nmrPipe -fn ZF -size 256 \
+| nmrPipe -fn FT -verb \
+-out out.ft2 -ov 
+
